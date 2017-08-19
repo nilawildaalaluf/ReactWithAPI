@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, ListView, Text, View } from 'react-native';
+import { ActivityIndicator, ListView, Text, View, Image, Dimensions } from 'react-native';
+const {width} = Dimensions.get('window')
 
 
-
-export default class Movies extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +12,7 @@ export default class Movies extends Component {
   }
 
   componentDidMount() {
-    return fetch('https://jsonplaceholder.typicode.com/posts')
+    return fetch('https://simple-lumen-api.herokuapp.com/posts')
       .then((response) => response.json())
       .then((responseJson) => {
         let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -41,15 +41,26 @@ export default class Movies extends Component {
 
     return (
       <View style={{flex: 1, paddingTop: 20}}>
+        <View>
+          <Image source={require('./image/fb.png')} style={{paddingTop: 20, width:width, height:100}}/>
+        </View>
+      <View style={{flex: 1, paddingTop: 20}}>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={(rowData) => 
           <View style={{padding: 10}}> 
-            <Text>Title : {rowData.title}</Text>
-            <Text>Description : {rowData.body}</Text>
+            <View style={{padding: 10, alignItems:'center'}}>
+            <Text>Title</Text>
+            </View>
+            <Text>{rowData.title}</Text>
+            <View style={{padding: 10, alignItems:'center'}}>
+            <Text>Description </Text>
+            </View>
+            <Text>{rowData.body}</Text>
           </View>}
         />
 
+      </View>
       </View>
     );
   }

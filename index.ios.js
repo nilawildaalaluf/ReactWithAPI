@@ -14,15 +14,12 @@ import {
 
 import App from './App';
 
+
 export default class ReactWithAPI extends Component {
   
   render() {
     return (
-        <View>
-          <Text>
-            Hello Word
-          </Text>
-        </View>
+        <App />
     );
   }
 }

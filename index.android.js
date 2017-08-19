@@ -4,7 +4,7 @@
  * @flow
  */
 
-//import React, { Component } from 'react';
+import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -14,7 +14,7 @@ import {
 
 import App from './App';
 
-export default class ReactWithAPI extends React.Component {
+export default class ReactWithAPI extends Component {
   
   render() {
     return (
